@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="Gradle: wildfly-remoting-8.0.0.Final">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.wildfly/wildfly-remoting/8.0.0.Final/44e89c314ae3696f2e5c2c19b2bd7820c8cc425a/wildfly-remoting-8.0.0.Final.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.wildfly/wildfly-remoting/8.0.0.Final/49847d2f60c266c5e21a4d8a2032a9bf1fe22e5c/wildfly-remoting-8.0.0.Final-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

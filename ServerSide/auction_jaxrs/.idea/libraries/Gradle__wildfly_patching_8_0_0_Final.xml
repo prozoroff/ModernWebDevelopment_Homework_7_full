@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="Gradle: wildfly-patching-8.0.0.Final">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.wildfly/wildfly-patching/8.0.0.Final/3de2f7bd34de752dacf392a385e441e69aa14af/wildfly-patching-8.0.0.Final.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.wildfly/wildfly-patching/8.0.0.Final/49e96432d49d52ce6ad0f747a9e999d8d50eac55/wildfly-patching-8.0.0.Final-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

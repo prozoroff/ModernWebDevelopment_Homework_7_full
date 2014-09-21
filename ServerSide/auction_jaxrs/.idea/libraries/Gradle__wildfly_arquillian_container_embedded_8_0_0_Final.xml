@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="Gradle: wildfly-arquillian-container-embedded-8.0.0.Final">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.wildfly/wildfly-arquillian-container-embedded/8.0.0.Final/2e55830cd52d23f4ff37b85d54e26e8c294f2e42/wildfly-arquillian-container-embedded-8.0.0.Final.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.wildfly/wildfly-arquillian-container-embedded/8.0.0.Final/88b95c0d93ee6e733ec862b7e99a2bd3aba7604f/wildfly-arquillian-container-embedded-8.0.0.Final-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="Gradle: wildfly-embedded-8.0.0.Final">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.wildfly/wildfly-embedded/8.0.0.Final/2849d4cc3ecd358db36c5c04ca7da1cb8b33c7e0/wildfly-embedded-8.0.0.Final.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.wildfly/wildfly-embedded/8.0.0.Final/3a5ac2baea4364ce54d969d6b294cf5e949e7b7f/wildfly-embedded-8.0.0.Final-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

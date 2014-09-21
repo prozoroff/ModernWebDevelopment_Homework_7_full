@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="Gradle: arquillian-testenricher-initialcontext-1.1.2.Final-wildfly-1">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jboss.arquillian.testenricher/arquillian-testenricher-initialcontext/1.1.2.Final-wildfly-1/3b389ce271f4c24a291e192bbb6541e5ac6fb5e1/arquillian-testenricher-initialcontext-1.1.2.Final-wildfly-1.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jboss.arquillian.testenricher/arquillian-testenricher-initialcontext/1.1.2.Final-wildfly-1/6e1b7491d36e7650fa3fc7aca978122cbae04359/arquillian-testenricher-initialcontext-1.1.2.Final-wildfly-1-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

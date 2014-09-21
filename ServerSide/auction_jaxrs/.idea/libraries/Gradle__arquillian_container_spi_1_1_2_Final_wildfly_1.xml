@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="Gradle: arquillian-container-spi-1.1.2.Final-wildfly-1">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jboss.arquillian.container/arquillian-container-spi/1.1.2.Final-wildfly-1/798a6549dcabffcf0ec0ba2b8432a2e7ca078796/arquillian-container-spi-1.1.2.Final-wildfly-1.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jboss.arquillian.container/arquillian-container-spi/1.1.2.Final-wildfly-1/6ee7c6ebd299ce9bb49cdb9a230f26bacb2a3452/arquillian-container-spi-1.1.2.Final-wildfly-1-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

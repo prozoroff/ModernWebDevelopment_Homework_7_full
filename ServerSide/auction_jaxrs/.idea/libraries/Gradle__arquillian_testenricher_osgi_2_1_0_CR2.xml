@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="Gradle: arquillian-testenricher-osgi-2.1.0.CR2">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jboss.arquillian.testenricher/arquillian-testenricher-osgi/2.1.0.CR2/d11a657eeebaf2fd48a38a714f6ccd4c7af5e775/arquillian-testenricher-osgi-2.1.0.CR2.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jboss.arquillian.testenricher/arquillian-testenricher-osgi/2.1.0.CR2/ae119eba16090d9c1ab5f126a9c0a65916e594b9/arquillian-testenricher-osgi-2.1.0.CR2-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

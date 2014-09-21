@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="Gradle: jboss-dmr-1.2.0.Final">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jboss/jboss-dmr/1.2.0.Final/9291da3175d1e9c1b5439a32575bb86e17c8a06a/jboss-dmr-1.2.0.Final.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jboss/jboss-dmr/1.2.0.Final/e611cf3b6b1cc3f3ec5ea7683454643d91c1db1e/jboss-dmr-1.2.0.Final-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

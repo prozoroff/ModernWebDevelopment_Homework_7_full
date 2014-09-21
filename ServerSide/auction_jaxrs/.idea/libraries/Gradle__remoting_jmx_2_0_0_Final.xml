@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="Gradle: remoting-jmx-2.0.0.Final">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jboss.remotingjmx/remoting-jmx/2.0.0.Final/3d35622907a88dc519222cbf87f9434f5e0272a8/remoting-jmx-2.0.0.Final.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jboss.remotingjmx/remoting-jmx/2.0.0.Final/d7086c5c0a78c9fa1c4e48bdb3a7eeb115d2fae9/remoting-jmx-2.0.0.Final-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

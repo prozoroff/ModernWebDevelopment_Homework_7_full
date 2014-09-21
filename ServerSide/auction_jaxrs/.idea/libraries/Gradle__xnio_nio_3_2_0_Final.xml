@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="Gradle: xnio-nio-3.2.0.Final">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jboss.xnio/xnio-nio/3.2.0.Final/7edd56da3f5619a71091c89df97b6f68873a5649/xnio-nio-3.2.0.Final.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jboss.xnio/xnio-nio/3.2.0.Final/2e34f4aab14d9a52ce3da9b0a97900e71264bbad/xnio-nio-3.2.0.Final-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

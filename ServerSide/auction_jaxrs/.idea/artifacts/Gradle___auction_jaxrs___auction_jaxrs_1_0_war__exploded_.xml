@@ -1,0 +1,19 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="Gradle : auction_jaxrs : auction_jaxrs-1.0.war (exploded)">
+    <output-path>$PROJECT_DIR$/build/classes/artifacts/auction_jaxrs/exploded/auction_jaxrs-1.0.war</output-path>
+    <root id="root">
+      <element id="javaee-facet-resources" facet="auction_jaxrs/web/Web Gradle : auction_jaxrs-1.0.war" />
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="auction_jaxrs" />
+        </element>
+        <element id="directory" name="lib">
+          <element id="library" level="project" name="Gradle: javax.json-1.0.4" />
+        </element>
+      </element>
+      <element id="directory" name="META-INF">
+        <element id="file-copy" path="$PROJECT_DIR$/build/classes/artifacts/auction_jaxrs/exploded/auction_jaxrs-1.0.war/META-INF/MANIFEST.MF" />
+      </element>
+    </root>
+  </artifact>
+</component>
