@@ -37,7 +37,7 @@
          });
     }])
     .config(['RestangularProvider', function (RestangularProvider) {
-      RestangularProvider.setBaseUrl('http://46.8.25.156:8080/auction_jaxrs-1.0/api/');
+      RestangularProvider.setBaseUrl('http://localhost:8080/auction_jaxrs-1.0/api/');
      //     RestangularProvider.setBaseUrl('http://127.0.0.1:8080/auction_jaxrs-1.0/api/');
       //RestangularProvider.setRequestSuffix('.json');
     }])

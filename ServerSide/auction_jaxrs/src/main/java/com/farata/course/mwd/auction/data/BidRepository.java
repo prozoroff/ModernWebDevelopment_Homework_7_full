@@ -62,16 +62,16 @@ public class BidRepository {
             if (productBids.size() > 0 && (productBids.get(productBids.size() - 1).getAmount().compareTo(amount) == 1)) {
                 return "[{\"message\": \"Sorry, there is at least one amount that larger than your: " +
                         productBids.get(productBids.size() - 1).getAmount() + " by user "
-                        + productBids.get(productBids.size() - 1).getUser().getName() + "\"}]";
+                        + productBids.get(productBids.size() - 1).getUser().getName() + "\", \"status\": \"cancel\"}]";
             }
 
             if ( product.getMinPrice().compareTo(amount) == 1) {
                 return "[{\"message\": \"Sorry, your bid amount must be greater than minimal price: " +
-                        product.getMinPrice() + "\"}]";
+                        product.getMinPrice() + "\", \"status\": \"cancel\"}]";
             }
 
             if (productRepository.findProductById(productId).getQuantity() < desiredQuantity) {
-                return "[{\"message\": \"Not enough products: " + product.getQuantity() + "\"}]";
+                return "[{\"message\": \"Not enough products: " + product.getQuantity() + "\", \"status\": \"cancel\"}]";
             }
 
             CleanUpBids(id);
@@ -81,7 +81,7 @@ public class BidRepository {
 
             UpdateReservedPrice(productId, amount);
 
-            return "[{\"message\": \"Good job! Your bid is winning now :)\"}]";
+            return "[{\"message\": \"Good job! Your bid is winning now :)\", \"status\": \"renew\"}]";
         }
         finally {
             sl.unlockWrite(stamp);

@@ -19,6 +19,8 @@
 
       userService.getUserId()
           .then(function (data) { _this.user = data[0]; });
+
+      bidService.wsconfig();
   };
 
 

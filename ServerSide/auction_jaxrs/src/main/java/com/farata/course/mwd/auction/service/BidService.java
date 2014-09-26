@@ -3,6 +3,7 @@ package com.farata.course.mwd.auction.service;
 import com.farata.course.mwd.auction.data.DataEngine;
 import com.farata.course.mwd.auction.entity.Bid;
 import com.farata.course.mwd.auction.entity.BidDTO;
+import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
@@ -12,6 +13,8 @@ import javax.ws.rs.*;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.HttpHeaders;
 import java.math.BigDecimal;
+import java.util.*;
+import java.util.function.BiConsumer;
 import java.util.logging.Logger;
 
 @Path("bid")
@@ -27,23 +30,6 @@ public class BidService {
         this.dataEngine = dataEngine;
     }
 
-    // Set up all the default values
-    private static final String DEFAULT_MESSAGE = "Hello, World!";
-    private static final String DEFAULT_CONNECTION_FACTORY = "jms/RemoteConnectionFactory";
-    private static final String DEFAULT_DESTINATION = "jms/queue/test";
-    private static final String DEFAULT_MESSAGE_COUNT = "57";
-    private static final String DEFAULT_USERNAME = "quickstartUser";
-    private static final String DEFAULT_PASSWORD = "quickstartPwd1!";
-    private static final String INITIAL_CONTEXT_FACTORY = "org.jboss.naming.remote.client.InitialContextFactory";
-    private static final String PROVIDER_URL = "http-remoting://127.0.0.1:8080";
-
-    //@Resource(lookup ="java:/ConnectionFactory")
-    //ConnectionFactory connectionFactory;
-    //
-    //@Resource(lookup = "queue/test")
-    //Queue testQueue;
-
-
     @GET
     @Path("/{id}/")
     public Bid getBid(@PathParam("id") int id, @Context HttpHeaders headers) {
@@ -53,7 +39,7 @@ public class BidService {
     @POST
     @Consumes(value={"application/json"})
     public String placeBid(String input) {
-        //{"productId":1,"amount":1,"desiredQuantity":1,"userId":1}
+
         BidDTO bid = new BidDTO();
         JSONParser parser = new JSONParser();
 
@@ -65,6 +51,10 @@ public class BidService {
             bid.setUserId(Integer.parseInt(jsonObj.get("userId").toString()));
             bid.setDesiredQuantity(Integer.parseInt(jsonObj.get("desiredQuantity").toString()));
             bid.setAmount(BigDecimal.valueOf(Integer.parseInt(jsonObj.get("amount").toString())));
+
+            productToUserMap.computeIfAbsent(bid.getProductId(), key -> new ArrayList<>()).add(String.valueOf(bid.getUserId()));
+            log.info("User " + bid.getUserId() + " placed a bid " + bid.getProductId());
+
         } catch (ParseException e) {
             e.printStackTrace();
         }
@@ -73,6 +63,15 @@ public class BidService {
         String response =  dataEngine.getBidRepository().placeBid(bid.getProductId(),
                 BigDecimal.valueOf(Integer.parseInt(bid.getAmount().toString())),
                 bid.getDesiredQuantity(), bid.getUserId());
+
+        try {
+            Object resp = parser.parse(response.toString());
+            if(((JSONObject)(((JSONArray)resp).get(0))).get("status").toString().equals("renew"))
+                notifySubscribers(bid.getProductId(),bid.getAmount());
+
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
 
         return response;
 
@@ -88,6 +87,19 @@ public class BidService {
 
     }
 
+    private final Map<Integer, List<String>> productToUserMap = new HashMap<>();
+    private final Map<String, BiConsumer<Integer, BigDecimal>> subscriptions = new HashMap<>();
+
+    public void subscribe(final String userId, final BiConsumer<Integer, BigDecimal> consumer) {
+        subscriptions.computeIfAbsent(userId, key -> consumer);
+        log.info("User " + userId + " subscribed to bid notifications");
+    }
+
+    public void unsubscribe(final String userId) {
+        subscriptions.remove(userId);
+        log.info("User " + userId + " unsubscribed from bid notifications");
+    }
+
     private void sendBidToQueue(){
 
         //try (JMSContext context =
@@ -98,5 +110,14 @@ public class BidService {
         //
         //    producer.send(testQueue, "Hello Bid!");
         //}
+    }
+
+    private void notifySubscribers(int productId, BigDecimal price) {
+        // Get all users who placed the bid.
+        productToUserMap.getOrDefault(productId, Collections.<String>emptyList()).stream()
+                // Find out if they subscribed to updates (WebSocket session still alive).
+                .filter(subscriptions::containsKey)
+                        // Notify them.
+                .forEach(userId -> subscriptions.get(userId).accept(productId, price));
     }
 }
