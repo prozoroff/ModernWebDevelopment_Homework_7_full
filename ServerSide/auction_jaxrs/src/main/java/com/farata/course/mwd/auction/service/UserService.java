@@ -24,6 +24,6 @@ public class UserService {
 
     @GET
     public String getMyUserId() {
-        return "[{\"userId\": " + dataEngine.getUserRepository().registerUser() + "}]";
+        return "Deprecated"; //"[{\"userId\": " + dataEngine.getUserRepository().registerUser() + "}]";
     }
 }

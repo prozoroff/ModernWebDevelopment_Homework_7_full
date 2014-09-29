@@ -17,16 +17,16 @@ public class UserRepository {
         users = new ArrayList<User>();
     }
 
-    public int registerUser() {
-        int id = users.size();
-        users.add(new User(id,"User: " + String.valueOf(id),String.valueOf(id) + "@auction.com",true));
-        return id;
+    public void registerUser(String id) {
+
+       users.add(new User(id,"User: " + id,id + "@auction.com",true));
+
     }
 
-    public User getUserById(int id) {
+    public User getUserById(String id) {
         User result = null;
         for (User user : users) {
-            if (user.getId() == id) {
+            if (user.getId().equals(id)) {
                 result = user;
             }
         }

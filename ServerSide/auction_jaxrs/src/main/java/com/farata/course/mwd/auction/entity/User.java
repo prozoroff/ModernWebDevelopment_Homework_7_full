@@ -1,12 +1,12 @@
 package com.farata.course.mwd.auction.entity;
 
 public class User {
-    private int id;
+    private String id;
     private String name;
     private String email;
     private boolean hasOverbidNotifications;
 
-    public User(int id, String name, String email, boolean hasOverbidNotifications) {
+    public User(String id, String name, String email, boolean hasOverbidNotifications) {
         this.id = id;
         this.name = name;
         this.email = email;
@@ -25,11 +25,11 @@ public class User {
 
     // TODO implement to getJsonObject method
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 

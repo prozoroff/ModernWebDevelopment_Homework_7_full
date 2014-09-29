@@ -48,7 +48,7 @@ public class BidService {
             obj = parser.parse(input.toString());
             JSONObject jsonObj = (JSONObject) obj;
             bid.setProductId(Integer.parseInt(jsonObj.get("productId").toString()));
-            bid.setUserId(Integer.parseInt(jsonObj.get("userId").toString()));
+            bid.setUserId(jsonObj.get("userId").toString());
             bid.setDesiredQuantity(Integer.parseInt(jsonObj.get("desiredQuantity").toString()));
             bid.setAmount(BigDecimal.valueOf(Integer.parseInt(jsonObj.get("amount").toString())));
 
@@ -80,7 +80,7 @@ public class BidService {
     @POST
     @Path("/{productId}/{amount}/{desiredQuantity}/{userId}/")
     public String placeBid(@PathParam("productId") int productId, @PathParam("amount") BigDecimal amount,
-                           @PathParam("desiredQuantity") int desiredQuantity, @PathParam("userId") int userId) {
+                           @PathParam("desiredQuantity") int desiredQuantity, @PathParam("userId") String userId) {
 
         sendBidToQueue();
         return dataEngine.getBidRepository().placeBid(productId, amount, desiredQuantity, userId);

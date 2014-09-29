@@ -8,7 +8,7 @@
 
       _this.placeBid =function(amount){
 
-          bidService.placeBid(_this.product.id, amount, _this.user.userId)
+          bidService.placeBid(_this.product.id, amount, bidService.getUserId())
               .then(function (data)
               {
                   alert(data[0].message);
@@ -17,8 +17,8 @@
 
       }
 
-      userService.getUserId()
-          .then(function (data) { _this.user = data[0]; });
+      //userService.getUserId()
+      //    .then(function (data) { _this.user = data[0]; });
 
       bidService.wsconfig();
   };

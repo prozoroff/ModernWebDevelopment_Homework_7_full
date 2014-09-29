@@ -46,7 +46,7 @@ public class BidRepository {
         return bids;
     }
 
-    public String placeBid(Integer productId, BigDecimal amount, Integer desiredQuantity, int userId)
+    public String placeBid(Integer productId, BigDecimal amount, Integer desiredQuantity, String userId)
     {
         long stamp = sl.writeLock();
 

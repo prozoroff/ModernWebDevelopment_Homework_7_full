@@ -14,9 +14,9 @@ public class BidDTO {
     private int prodictId;
     private BigDecimal amount;
     private int desiredQuantity;
-    private int userId;
+    private String userId;
 
-    public BidDTO(int prodictId, BigDecimal amount, int desiredQuantity,int userId) {
+    public BidDTO(int prodictId, BigDecimal amount, int desiredQuantity,String userId) {
         this.prodictId = prodictId;
         this.userId = userId;
         this.amount = amount;
@@ -42,7 +42,7 @@ public class BidDTO {
         return desiredQuantity;
     }
 
-    public int getUserId() {
+    public String getUserId() {
         return userId;
     }
 
@@ -58,7 +58,7 @@ public class BidDTO {
         this.desiredQuantity = quantity;
     }
 
-    public void setUserId(int userId) {
+    public void setUserId(String userId) {
         this.userId = userId;
     }
 

@@ -4,6 +4,8 @@ package com.farata.course.mwd.auction.service;
  * Created by prozorov on 26/09/14.
  */
 
+import com.farata.course.mwd.auction.data.DataEngine;
+
 import javax.inject.Inject;
 import javax.websocket.*;
 import javax.websocket.server.ServerEndpoint;
@@ -19,10 +21,23 @@ public class BidWebSocket {
     @Inject
     private BidService bidService;
 
+    DataEngine dataEngine;
+
+    @Inject
+    public void setDataEngine(DataEngine dataEngine) {
+        this.dataEngine = dataEngine;
+    }
+
     @OnOpen
     public void onOpen(Session session, EndpointConfig config) throws IOException {
         session.getBasicRemote().sendText(session.getId());
-        bidService.subscribe(session.getId(), (productId, price) -> sendBidUpdate(productId, price, session));
+        dataEngine.getUserRepository().registerUser(session.getId());
+        try {
+            bidService.subscribe(session.getId(), (productId, price) -> sendBidUpdate(productId, price, session));
+        }
+        catch (Exception ex) {
+            String test = ex.getMessage();
+        }
     }
 
     @OnClose
