@@ -13,8 +13,6 @@ import javax.ws.rs.*;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.HttpHeaders;
 import java.math.BigDecimal;
-import java.util.*;
-import java.util.function.BiConsumer;
 import java.util.logging.Logger;
 
 @Path("bid")
@@ -22,12 +20,15 @@ import java.util.logging.Logger;
 public class BidService {
 
     DataEngine dataEngine;
+    NotificationService notificationService;
 
     private static final Logger log = Logger.getLogger(BidService.class.getName());
 
     @Inject
-    public void setDataEngine(DataEngine dataEngine) {
+    public void setData(DataEngine dataEngine, NotificationService notificationService)
+    {
         this.dataEngine = dataEngine;
+        this.notificationService = notificationService;
     }
 
     @GET
@@ -52,7 +53,7 @@ public class BidService {
             bid.setDesiredQuantity(Integer.parseInt(jsonObj.get("desiredQuantity").toString()));
             bid.setAmount(BigDecimal.valueOf(Integer.parseInt(jsonObj.get("amount").toString())));
 
-            productToUserMap.computeIfAbsent(bid.getProductId(), key -> new ArrayList<>()).add(String.valueOf(bid.getUserId()));
+            notificationService.addUserToProduct(bid);
             log.info("User " + bid.getUserId() + " placed a bid " + bid.getProductId());
 
         } catch (ParseException e) {
@@ -67,7 +68,7 @@ public class BidService {
         try {
             Object resp = parser.parse(response.toString());
             if(((JSONObject)(((JSONArray)resp).get(0))).get("status").toString().equals("renew"))
-                notifySubscribers(bid.getProductId(),bid.getAmount());
+                notificationService.notifySubscribers(bid.getProductId(),bid.getAmount());
 
         } catch (ParseException e) {
             e.printStackTrace();
@@ -87,18 +88,7 @@ public class BidService {
 
     }
 
-    private final Map<Integer, List<String>> productToUserMap = new HashMap<>();
-    private final Map<String, BiConsumer<Integer, BigDecimal>> subscriptions = new HashMap<>();
 
-    public void subscribe(final String userId, final BiConsumer<Integer, BigDecimal> consumer) {
-        subscriptions.computeIfAbsent(userId, key -> consumer);
-        log.info("User " + userId + " subscribed to bid notifications");
-    }
-
-    public void unsubscribe(final String userId) {
-        subscriptions.remove(userId);
-        log.info("User " + userId + " unsubscribed from bid notifications");
-    }
 
     private void sendBidToQueue(){
 
@@ -110,14 +100,5 @@ public class BidService {
         //
         //    producer.send(testQueue, "Hello Bid!");
         //}
-    }
-
-    private void notifySubscribers(int productId, BigDecimal price) {
-        // Get all users who placed the bid.
-        productToUserMap.getOrDefault(productId, Collections.<String>emptyList()).stream()
-                // Find out if they subscribed to updates (WebSocket session still alive).
-                .filter(subscriptions::containsKey)
-                        // Notify them.
-                .forEach(userId -> subscriptions.get(userId).accept(productId, price));
     }
 }

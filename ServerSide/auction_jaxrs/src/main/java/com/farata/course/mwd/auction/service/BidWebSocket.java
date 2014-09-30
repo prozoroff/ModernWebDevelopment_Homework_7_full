@@ -22,10 +22,12 @@ public class BidWebSocket {
     private BidService bidService;
 
     DataEngine dataEngine;
+    NotificationService notificationService;
 
     @Inject
-    public void setDataEngine(DataEngine dataEngine) {
+    public void setDataEngine(DataEngine dataEngine,NotificationService notificationService) {
         this.dataEngine = dataEngine;
+        this.notificationService = notificationService;
     }
 
     @OnOpen
@@ -33,7 +35,7 @@ public class BidWebSocket {
         session.getBasicRemote().sendText(session.getId());
         dataEngine.getUserRepository().registerUser(session.getId());
         try {
-            bidService.subscribe(session.getId(), (productId, price) -> sendBidUpdate(productId, price, session));
+            notificationService.subscribe(session.getId(), (productId, price) -> sendBidUpdate(productId, price, session));
         }
         catch (Exception ex) {
             String test = ex.getMessage();
@@ -42,7 +44,7 @@ public class BidWebSocket {
 
     @OnClose
     public void onClose(Session session, CloseReason closeReason) {
-        bidService.unsubscribe(session.getId());
+        notificationService.unsubscribe(session.getId());
     }
 
     void sendBidUpdate(Integer productId, BigDecimal price, Session session) {

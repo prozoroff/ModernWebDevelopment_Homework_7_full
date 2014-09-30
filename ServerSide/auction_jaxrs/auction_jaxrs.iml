@@ -109,7 +109,7 @@
     <orderEntry type="library" scope="TEST" name="Gradle: arquillian-core-spi-1.1.2.Final-wildfly-1" level="project" />
     <orderEntry type="library" scope="TEST" name="Gradle: arquillian-config-api-1.1.2.Final-wildfly-1" level="project" />
     <orderEntry type="library" scope="TEST" name="Gradle: arquillian-config-impl-base-1.1.2.Final-wildfly-1" level="project" />
-    <orderEntry type="library" name="json-simple-1.1.11" level="project" />
+    <orderEntry type="library" name="json-simple-1.1.12" level="project" />
   </component>
 </module>
 

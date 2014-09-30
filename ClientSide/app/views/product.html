@@ -47,7 +47,7 @@
       <p>Seller: <b>starmotors</b> (135) 100% Positive feedback</p>
     </div>
     <div class="col-sm-12 col-md-9">
-      <h4><b>Current Price</b>: {{ ctrl.product.price | currency }} [5&nbsp;bids]</h4>
+      <h4><b>Current Price: </b><b ng-bind="ctrl.product.reservedPrice"></b><b> $</b></h4>
       <p>
         <b>Time left</b>: {{ ctrl.product.timeleft }}h
       </p>
